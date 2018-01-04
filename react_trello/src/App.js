@@ -37,8 +37,7 @@ const getItemStyle = (draggableStyle, isDragging) => ({
 })
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? '#3f51b5' : '#eee',
-  minHeight: isDraggingOver ? '100%' : 0
+  background: isDraggingOver ? '#3f51b5' : '#eee'
 })
 
 const sampleCards = [
@@ -301,8 +300,8 @@ class App extends Component {
               editing={c.id === currentlyEditing}
               toggle={this.toggleEditing(c.id)}
               onChangeText={this.changeCardText(c.id)} />
-            {provided.placeholder}
           </div>
+          {provided.placeholder}
         </div>
       )
 
