@@ -1,0 +1,139 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: rgba(63, 81, 181, 1);
+  padding: 2px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.25em;
+}
+
+.row-container {
+  padding: 2em;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.column {
+  max-width: 300px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  flex-grow: 1;
+  margin-left: 12px;
+  margin-right: 12px;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.column .add-text {
+  margin-top: 1em;
+  width: 100%;
+  color: #000;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.add-text:hover {
+  text-decoration: underline;
+}
+
+.card {
+  padding: 1em .5em 1em .5em;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: #fff;
+  border-radius: 5px;
+  /* box-shadow: 0 0 0 1px rgba(136, 152, 170, .1), 0 15px 35px 0 rgba(49, 49, 93, .1), 0 5px 15px 0 rgba(0, 0, 0, .08); */
+}
+
+.change-col-title {
+  display: flex;
+}
+
+.col-title {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+}
+
+textarea {
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  min-height: 5em;
+  margin-bottom: 1em;
+}
+
+.card .card-text {
+  max-width: 85%;
+}
+
+.shadow {
+  box-shadow: 0 0 0 1px rgba(136, 152, 170, .1), 0 15px 35px 0 rgba(49, 49, 93, .1), 0 5px 15px 0 rgba(0, 0, 0, .08);
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.card .card-display {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-edit-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cancel-btn {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.save-btn {
+  margin-left: 5px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: green;
+  color: #fff;
+  padding: .75em;
+}
