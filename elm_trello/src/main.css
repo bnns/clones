@@ -74,10 +74,15 @@ button:focus {
 .col-title {
   display: flex;
   align-items: center;
-  justify-content: stretch;
+  justify-content: center;
   cursor: pointer;
   color: #fff;
   padding: 1em;
+}
+
+.col-title > div {
+  padding-left: .5em;
+  padding-right: .5em;
 }
 
 input {
