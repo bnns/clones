@@ -336,7 +336,7 @@ cardPlaceholder dragState pos =
         div
             [ class "card-placeholder"
             , classList [ ( "highlight", highlightMe ) ]
-            , onDrop MoveCard
+            , attribute "ondragover" "return false"
             , onDragOver <| Highlight pos
             ]
             [ div [ class "transparent" ] [ text "placeholder" ] ]
@@ -355,9 +355,7 @@ toRawIndex index colId cards =
             getAt index filtered
                 |> Maybe.withDefault defaultCard
     in
-        if index == 0 then
-            0
-        else if filteredLength == 0 || filteredLength == index then
+        if filteredLength == 0 || filteredLength <= index then
             List.length cards
         else
             elemIndex card cards
@@ -375,13 +373,19 @@ swapCards dragState cards =
                 rawEnd =
                     toRawIndex end endCol cards
 
+                insertIndex =
+                    if rawStart < rawEnd then
+                        rawEnd - 1
+                    else
+                        rawEnd
+
                 card =
                     getAt rawStart cards
                         |> Maybe.map (\c -> { c | belongsTo = endCol })
                         |> Maybe.withDefault defaultCard
             in
                 removeAt rawStart cards
-                    |> splitAt rawEnd
+                    |> splitAt insertIndex
                     |> \( left, right ) -> left ++ [ card ] ++ right
 
         _ ->
@@ -499,9 +503,14 @@ renderColumn dragState editState editText cards ({ title, id, backgroundColor } 
             cards
                 |> List.filter (\c -> c.belongsTo == id)
 
+        -- kind of ugly, but we need a last placeholder when using interweave
+        lastPlaceholder =
+            cardPlaceholder dragState (CardPosition id (List.length filtered))
+
         placeholders =
             filtered
                 |> List.indexedMap (\i _ -> cardPlaceholder dragState (CardPosition id i))
+                |> flip (++) [ lastPlaceholder ]
 
         myCards =
             filtered
@@ -519,10 +528,10 @@ renderColumn dragState editState editText cards ({ title, id, backgroundColor } 
         div
             [ class "column"
             , style [ ( "background-color", backgroundColor ) ]
-            , attribute "ondragover" "return false"
+            , onDrop MoveCard
             ]
             [ renderTitle editState editText col
-            , div [] myCards
+            , div [ attribute "ondragover" "return false" ] myCards
             , viewIf (editState == AddingCard id) (renderAddForm col editText)
             , viewIf (editState /= AddingCard id) showAddCardBtn
             ]
