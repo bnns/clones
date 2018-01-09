@@ -520,7 +520,8 @@ renderColumn dragState editState editText cards ({ title, id, backgroundColor } 
         showAddCardBtn =
             div
                 [ onClick <| ToggleAddCardForm id
-                , class "btn text-white"
+                , class "btn text-white noselect"
+                , style [ ( "margin-top", "1em" ) ]
                 ]
                 [ text "Add a card"
                 ]
@@ -531,7 +532,7 @@ renderColumn dragState editState editText cards ({ title, id, backgroundColor } 
             , onDrop MoveCard
             ]
             [ renderTitle editState editText col
-            , div [ attribute "ondragover" "return false" ] myCards
+            , div [ attribute "ondragover" "event.dataTransfer.dropEffect = 'move'; return false;" ] myCards
             , viewIf (editState == AddingCard id) (renderAddForm col editText)
             , viewIf (editState /= AddingCard id) showAddCardBtn
             ]

@@ -43,6 +43,7 @@ button:focus {
   margin-right: 12px;
   border-radius: 5px;
   padding: 1em;
+  transition: all .5s linear;
 }
 
 .column .add-text {
@@ -122,14 +123,15 @@ textarea {
 
 .card-placeholder {
   height: 1px;
+  transition: height .3s cubic-bezier(0.09, .89, .83, .93);
 }
 
 .card-placeholder.highlight {
-  min-height: 52px;
+  height: 64px;
   width: 100%;
   border: none;
   border-radius: 5px;
-  background-color: #eee;
+  background-color: transparent;
 }
 
 .card.card-display {
