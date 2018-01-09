@@ -3,7 +3,8 @@
 ### Notable Features:
 
 - Local storage sync via Elm ports
-- Home-rolled drag and drop (based on https://github.com/huytd/kanelm)
+- Home-rolled drag and drop with cubic-bezier animation (based on https://github.com/huytd/kanelm)
+- HTML5 color picker
 
 ### Create Elm App
 

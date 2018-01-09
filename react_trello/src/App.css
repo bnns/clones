@@ -30,8 +30,8 @@ button:focus {
 .row-container {
   padding: 2em;
   display: flex;
-  align-items: start;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .column {
@@ -65,7 +65,6 @@ button:focus {
   margin-bottom: 12px;
   background-color: #fff;
   border-radius: 5px;
-  /* box-shadow: 0 0 0 1px rgba(136, 152, 170, .1), 0 15px 35px 0 rgba(49, 49, 93, .1), 0 5px 15px 0 rgba(0, 0, 0, .08); */
 }
 
 .change-col-title {
@@ -91,6 +90,7 @@ textarea {
   width: 100%;
   min-height: 5em;
   margin-bottom: 1em;
+  resize: vertical;
 }
 
 .card .card-text {
