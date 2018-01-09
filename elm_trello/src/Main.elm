@@ -21,6 +21,8 @@ type Msg
     | AddCardConfirm ColId
     | ToggleEditTitleForm ColId
     | EditTitleConfirm ColId
+    | ToggleEditColorForm ColId
+    | EditColorConfirm ColId
     | ToggleEditCardForm CardId
     | EditCardConfirm CardId
     | DragCard CardPosition
@@ -44,6 +46,7 @@ type EditState
     = EditingCard CardId
     | AddingCard ColId
     | EditingTitle ColId
+    | EditingColor ColId
     | NotEditing
 
 
@@ -196,6 +199,16 @@ update msg model =
             }
                 ! []
 
+        ToggleEditColorForm colId ->
+            { model
+                | editState = toggleEdit model.editState (EditingColor colId)
+                , editText =
+                    List.Extra.find (\c -> c.id == colId) model.columns
+                        |> Maybe.map .backgroundColor
+                        |> Maybe.withDefault ""
+            }
+                ! []
+
         ToggleEditCardForm cardId ->
             { model
                 | editState = toggleEdit model.editState (EditingCard cardId)
@@ -236,7 +249,19 @@ update msg model =
                                 | columns = updateInList (\c -> { c | title = model.editText }) colId model.columns
                             }
             in
-                newModel ! []
+                newModel ! [ save <| encodeState newModel ]
+
+        EditColorConfirm colId ->
+            let
+                newModel =
+                    model
+                        |> clearEditState
+                        |> \m ->
+                            { m
+                                | columns = updateInList (\c -> { c | backgroundColor = model.editText }) colId model.columns
+                            }
+            in
+                newModel ! [ save <| encodeState newModel ]
 
         EditCardConfirm cardId ->
             let
@@ -485,6 +510,20 @@ renderTitle editState editText col =
                 ]
                 [ text "Cancel" ]
             ]
+    else if editState == EditingColor col.id then
+        div [ class "change-col-title" ]
+            [ input [ type_ "color", value editText, onInput InputText ] []
+            , button
+                [ class "btn save-btn"
+                , onClick <| EditColorConfirm col.id
+                ]
+                [ text "Save" ]
+            , button
+                [ class "btn cancel-btn"
+                , onClick <| ToggleEditColorForm col.id
+                ]
+                [ text "Cancel" ]
+            ]
     else
         div [ class "col-title" ]
             [ div [] [ text col.title ]
@@ -493,6 +532,11 @@ renderTitle editState editText col =
                 , class "btn"
                 ]
                 [ span [ class "fas fa-pencil-alt" ] [] ]
+            , div
+                [ onClick <| ToggleEditColorForm col.id
+                , class "btn"
+                ]
+                [ span [ class "fas fa-eye" ] [] ]
             ]
 
 

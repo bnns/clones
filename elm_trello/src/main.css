@@ -70,6 +70,7 @@ button:focus {
 
 .change-col-title {
   display: flex;
+  align-items: center;
 }
 
 .col-title {
