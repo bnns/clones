@@ -1,4 +1,4 @@
-module Util exposing (randomIdString)
+module Utils.Random exposing (randomIdString)
 
 import Random exposing (Generator)
 import Char

@@ -28,7 +28,7 @@ button:focus {
   padding: 2em;
   display: flex;
   align-items: start;
-  justify-content: space-between;
+  justify-content: center;
   min-width: 768px;
 }
 
@@ -116,10 +116,30 @@ textarea {
   user-select: none;
 }
 
-.card .card-display {
+.transparent {
+  opacity: 0;
+}
+
+.card-placeholder {
+  height: 1px;
+}
+
+.card-placeholder.highlight {
+  min-height: 52px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background-color: #eee;
+}
+
+.card.card-display {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+}
+
+.card-display .card-text {
+  flex: 1;
 }
 
 .card-edit-row {
@@ -129,13 +149,12 @@ textarea {
 }
 
 .cancel-btn {
-  margin-right: 15px;
-  margin-left: 15px;
+  color: #fff;
+  background-color: inherit;
   border: none;
   border-radius: 2px;
   font-size: 14px;
   font-weight: 700;
-  color: #fff;
   padding: .75em;
 }
 
