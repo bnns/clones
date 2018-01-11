@@ -616,7 +616,7 @@ view { columns, cards, editState, editText, dragState } =
                 |> div [ class "row-container" ]
     in
         section [ id "main" ]
-            [ div [ class "header" ] [ text "Trello in Elm" ]
+            [ div [ class "header" ] [ text "Elm Kanban" ]
             , div [] [ content ]
             ]
 

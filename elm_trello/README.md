@@ -1,4 +1,4 @@
-[Live Demo](http://elm-trello.s3-website-us-east-1.amazonaws.com/)
+[Live Demo](https://elm-kanban.softwarethoughts.com)
 
 ### Notable Features:
 

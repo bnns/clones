@@ -1,4 +1,4 @@
-[Live demo](http://trello-clone.s3-website-us-east-1.amazonaws.com/)
+[Live demo](https://react-kanban.softwarethoughts.com)
 
 ### Notable Features:
 
